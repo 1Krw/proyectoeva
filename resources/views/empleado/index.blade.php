@@ -11,7 +11,7 @@
         </div>
     @endif
 
-<a href="{{url('empleado/create')}}" class="btn btn-success">Registrar nuevo empleado</a>
+<a href="{{url('empleado/create')}}" class="btn btn-success">Registrar empleado</a>
     <br>
     <br>
     <div class="table-responsive">
