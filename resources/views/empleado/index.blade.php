@@ -14,52 +14,55 @@
 <a href="{{url('empleado/create')}}" class="btn btn-success">Registrar nuevo empleado</a>
     <br>
     <br>
-    <table class="table table-light">
+    <div class="table-responsive">
+        <table class="table align-middle table-light table-hover text-center">
 
-        <thead class="thead-light">
-            <tr>
-                <th>#</th>
-                <th>Foto</th>
-                <th>Nombre</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
-                <th>Correo</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            @foreach ($empleados as $empleado)
-            <tr>
-                <td>{{$empleado->id}}</td>
+            <tbody>
+                @foreach ($empleados as $empleado)
+                <tr>
+                    <td>{{$empleado->id}}</td>
 
-                <td>
-                    <img class="img-thumbnail img-fluid rounded-circle" src="{{asset('storage').'/'.$empleado->Foto}}" style="width: 75px; height:75px" alt="">
-                </td>
+                    <td>
+                        <img class="img-thumbnail img-fluid rounded-circle" src="{{asset('storage').'/'.$empleado->Foto}}" style="width: 75px; height:75px" alt="">
+                    </td>
 
-                <td>{{$empleado->Nombre}}</td>
-                <td>{{$empleado->ApPat}}</td>
-                <td>{{$empleado->ApMat}}</td>
-                <td>{{$empleado->Correo}}</td>
-                <td>
+                    <td>{{$empleado->Nombre}}</td>
+                    <td>{{$empleado->ApPat}}</td>
+                    <td>{{$empleado->ApMat}}</td>
+                    <td>{{$empleado->Correo}}</td>
+                    <td>
 
-                    <a href="{{url('/empleado/'.$empleado->id.'/edit')}}" class="btn btn-warning">
-                        Editar
-                    </a>
-                    |
-                    <form action="{{url('/empleado/'.$empleado->id)}}" class="d-inline" method="post">
-                        @csrf
-                        {{method_field('DELETE')}}
-                        <input type="submit" class="btn btn-danger" onclick="return confirm('¿Realmente deseas eliminar esto?')"
-                        value="Borrar">
-                    </form>
+                        <a href="{{url('/empleado/'.$empleado->id.'/edit')}}"
+                            class="btn btn-warning">
+                            Editar
+                        </a>
+                        |
+                        <form action="{{url('/empleado/'.$empleado->id)}}" class="d-inline" method="post">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <input type="submit" class="btn btn-danger" onclick="return confirm('¿Realmente deseas eliminar esto?')"
+                            value="Borrar">
+                        </form>
 
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
 
-    </table>
+        </table>
+    </div>
     {!!$empleados->links()!!}
 </div>
 @endsection
